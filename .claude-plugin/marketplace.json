@@ -1,0 +1,14 @@
+{
+  "name": "ideamtrls",
+  "description": "Tools for writing great docs that are read by machines.",
+  "owner": {
+    "name": "ideamtrls"
+  },
+  "plugins": [
+    {
+      "name": "memorymtrls",
+      "description": "A plugin for writing docs for machines.",
+      "source": "./plugin"
+    }
+  ]
+}
