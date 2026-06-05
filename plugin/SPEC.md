@@ -1,15 +1,15 @@
 # MemoryMtrls format spec
 
-This file is the single source of truth for the file formats the MemoryMtrls
-commands produce and maintain. Both `/mtrls-init-memory` and
-`/mtrls-update-memory` read this before writing anything, so the two commands
-never drift apart.
+This file is the single source of truth for the file formats used by
+MemoryMtrls commands. Both `/mtrls-init-memory` and `/mtrls-update-memory` read
+this before writing anything, so the two commands never drift apart.
 
 The core idea: `CLAUDE.md` is auto-loaded into every agent's context, so it must
 stay small. Everything else lives in `memory/`, one file per category, read only
-when relevant. **The frontmatter of the memory files is the source of truth** —
-the `CLAUDE.md` router table is always *generated from it* and can be rebuilt at
-any time.
+when relevant.
+
+**The frontmatter of the memory files is the source of truth.** The `CLAUDE.md`
+router table is always *generated from it* and can be rebuilt at any time.
 
 ---
 
@@ -30,18 +30,21 @@ words (e.g. "error handling"), match the repo's dominant filename convention:
 2. Classify each: `-` → **kebab**, `_` → **snake**, `lowerThenUpper` → **camel**,
    `UpperFirst` → **Pascal**.
 3. Use the most common style. On a tie or if there are no multi-word names,
-   default to **kebab-case** for markdown.
+   default to **kebab-case**.
 
 Examples for the category "error handling":
-`error-handling.md` (kebab) · `error_handling.md` (snake) · `errorHandling.md` (camel)
+- kebab: `error-handling.md`
+- snake: `error_handling.md`
+- camel: `errorHandling.md`
+- pascal: `ErrorHandling.md`
 
-Single-word categories (e.g. `concurrency`) are unaffected by casing.
+Single-word categories (e.g. `concurrency`) are lowercase unless repo uses pascal.
 
 ---
 
 ## 2. Memory file format
 
-Each `memory/<category>.<ext>` file has YAML frontmatter followed by the body.
+Each `memory/<category>.md` file has YAML frontmatter followed by the body.
 
 ```markdown
 ---
@@ -81,15 +84,18 @@ reading only this file (plus anything it explicitly cross-references).
 
 - Be specific to *this* codebase. No generic advice, no placeholders.
 - Keep it self-contained per category. Cross-reference sparingly.
-- It is fine for a file to be short — a small accurate file beats a padded one.
+- It is fine for a file to be short. A small accurate file beats a padded one.
 
 ---
 
 ## 3. The CLAUDE.md router
 
-`CLAUDE.md` holds: a short project header, a routing instruction, and a generated
-table — and little else. The table lives inside marker comments so it can be
-regenerated without touching anything else in the file.
+`CLAUDE.md` holds: 
+- a short project header
+- a routing instruction
+- a generated table
+
+The table lives inside marker comments so it can be regenerated without touching anything else in the file.
 
 ```markdown
 # <Project name>
