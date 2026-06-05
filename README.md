@@ -44,11 +44,11 @@ See [`plugin/SPEC.md`](plugin/SPEC.md) for the file formats.
 
 ## Commands
 
-- `/mtrls-init-memory` — sets up the system. It reads the repo, suggests
+- `/memorymtrls:init` — sets up the system. It reads the repo, suggests
   categories, waits for your approval, then writes the `memory/` files and
   replaces `CLAUDE.md` with a router. It won't write anything until you approve
   the categories.
-- `/mtrls-update-memory` — run it at the end of a session. It finds what changed,
+- `/memorymtrls:update` — run it at the end of a session. It finds what changed,
   updates the affected memory files, and regenerates the router.
 
 ## Install
@@ -60,6 +60,6 @@ See [`plugin/SPEC.md`](plugin/SPEC.md) for the file formats.
 
 ## Usage
 
-1. Run `/mtrls-init-memory` and approve the categories.
+1. Run `/memorymtrls:init` and approve the categories.
 2. Work as normal. Agents read only the memory files they need.
-3. Run `/mtrls-update-memory` at the end of a session to keep memory current.
+3. Run `/memorymtrls:update` at the end of a session to keep memory current.

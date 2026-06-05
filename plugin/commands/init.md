@@ -51,4 +51,4 @@ live with these categories.
 
 ## Step 6 — Report
 Summarize what you created (the files + the router), and tell the user to run
-`/mtrls-update-memory` at the end of future sessions to keep memory current.
+`/memorymtrls:update` at the end of future sessions to keep memory current.

@@ -10,7 +10,7 @@ First, read `${CLAUDE_PLUGIN_ROOT}/SPEC.md` for the file formats, then reread
 the repo's `CLAUDE.md` router to refresh knowledge of which memory files exist
 and what each one covers. Reread individual `memory/*` files as needed.
 
-If there is no `memory/` directory yet, tell the user to run `/mtrls-init-memory`
+If there is no `memory/` directory yet, tell the user to run `/memorymtrls:init`
 first, and stop.
 
 ## Step 1 — Determine what changed this session

@@ -1,7 +1,7 @@
 # MemoryMtrls format spec
 
 This file is the single source of truth for the file formats used by
-MemoryMtrls commands. Both `/mtrls-init-memory` and `/mtrls-update-memory` read
+MemoryMtrls commands. Both `/memorymtrls:init` and `/memorymtrls:update` read
 this before writing anything, so the two commands never drift apart.
 
 The core idea: `CLAUDE.md` is auto-loaded into every agent's context, so it must
