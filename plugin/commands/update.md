@@ -42,6 +42,14 @@ say so and stop.
 - For a new subsystem/concern with no category: propose a new memory file (name
   in the repo's casing, `scope`, and "read when" trigger) and **confirm with the
   user before creating it** — the user owns the taxonomy.
+- If many files changed this session, you may map and edit them with parallel
+  agents (one per affected memory file); keep the same surgical scope per file.
+
+## Step 3.5 — Verify
+After editing, sanity-check the changed claims against the **current** source: the
+facts you wrote still hold, any moved/renamed paths are reflected in the affected
+files' `globs`, and cross-references still resolve. Fix anything that doesn't
+match — a stale or wrong memory file is worse than none.
 
 ## Step 4 — Regenerate the router
 Rebuild the `<!-- mtrls:router:start -->` … `<!-- mtrls:router:end -->` block in
