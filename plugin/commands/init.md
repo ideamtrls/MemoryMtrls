@@ -10,9 +10,9 @@ the CLAUDE.md router block). Follow it precisely.
 
 Work through these steps. Do not skip the approval checkpoint in Step 3.
 
-## Step 1 — Detect conventions & mode
+## Step 1 — Detect format settings & mode
 
-**Conventions** (per SPEC.md):
+**Format settings** (per SPEC.md):
 - Filename casing for category files (kebab / snake / camel / Pascal; default
   kebab for markdown).
 - Memory directory name (default `memory/`; if one already exists, keep its name
@@ -97,8 +97,8 @@ targeted fixes for whatever the check surfaces.
 ## Step 6 — Write the CLAUDE.md router
 
 Generate the router table **from the frontmatter** you just wrote or migrated,
-inside the `<!-- mtrls:router:start -->` / `<!-- mtrls:router:end -->` markers
-(SPEC.md §3). This is deterministic — do it in one context, no agents. Preserve
+inside the `<!-- memorymtrls:start -->` / `<!-- memorymtrls:end -->` markers
+(SPEC.md §4). This is deterministic — do it in one context, no agents. Preserve
 all CLAUDE.md content outside the markers. If you migrated content out of
 CLAUDE.md into memory files, replace that migrated block with the router and keep
 a short project header.

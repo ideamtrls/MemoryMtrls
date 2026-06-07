@@ -52,7 +52,7 @@ files' `globs`, and cross-references still resolve. Fix anything that doesn't
 match — a stale or wrong memory file is worse than none.
 
 ## Step 4 — Regenerate the router
-Rebuild the `<!-- mtrls:router:start -->` … `<!-- mtrls:router:end -->` block in
+Rebuild the `<!-- memorymtrls:start -->` … `<!-- memorymtrls:end -->` block in
 `CLAUDE.md` from the current frontmatter set (adding rows for new files, removing
 rows for deleted ones, refreshing triggers). Leave everything outside the markers
 untouched.

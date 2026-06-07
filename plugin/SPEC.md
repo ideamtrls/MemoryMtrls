@@ -20,7 +20,6 @@ Examples of each casing format on the string "_error handling_":
 
 The casing format used for files does not have to match the format used for directories.
 
-
 ---
 
 ## 2. Memory Directory
@@ -30,7 +29,6 @@ Context about different parts of the project are stored as memory files in a mem
 - By default, the directory name is `memory/`
 - If repo uses pascal casing for directory names, the default will be `Memory/`
 - Defaults can be overridden for user preference or to avoid name collisions
-
 
 ---
 
@@ -72,6 +70,7 @@ Real, specific knowledge about this area drawn from the actual codebase: convent
 ### Body rules
 
 - Be specific to *this* codebase. No generic advice, no placeholders.
+- Include this area's conventions and style, not just facts.
 - Keep it self-contained per category. Cross-reference sparingly.
 - It is fine for a file to be short. A small accurate file beats a padded one.
 
@@ -80,25 +79,22 @@ Real, specific knowledge about this area drawn from the actual codebase: convent
 ## 4. CLAUDE.md as memory router
 
 `CLAUDE.md` holds: 
-- a short project header
-- context that every agent should know about the project
+- a short project header (plus any rules that apply to every task)
 - brief description of memory system 
 - generated routing table
 
-The table lives inside marker comments so it can be regenerated without touching anything else in the file.
+The routing table lives inside marker comments and is regenerated from frontmatter; everything outside the markers is user-owned and left untouched.
+
+Conventions live in the memory files (§3), not here — they load only when their file is read. The exception is a rule that applies to *every* task; put those in the header prose so they're always loaded.
 
 `CLAUDE.md` uses the following template. Tags `<...>` are replaced with actual values from the project.
 
 ```markdown
 # <Project name>
 
-<One or two lines on what the project is.>
+<One or two lines on what the project is. Note any rules that apply to every task here too.>
 
-## Project Context
-
-<Project level context that every agent should be aware of regardless of task.>
-
-<!-- memorymtrls:router:start -->
+<!-- memorymtrls:start -->
 ## Memory
 
 This project's working context lives in <Memory directory>, with one file per category of context. The table below maps task level concerns to the context file(s) that cover it.
@@ -110,10 +106,10 @@ This project's working context lives in <Memory directory>, with one file per ca
 | `memory/auth.md` | working on login, sessions, tokens, permissions |
 | `memory/concurrency.md` | touching async code, locks, the task queue, workers |
 | `memory/data-model.md` | changing schemas or migrations, anything under `db/` |
-<!-- memorymtrls:router:end -->
+<!-- memorymtrls:end -->
 ```
 
-### Generating the table
+### Generating the router table
 
 - Always include the routing instruction (the bold "Before starting a task…" sentence above) verbatim inside the block, except for the `<Memory directory>` tag which should be rendered. It is crucial agents actually consult the memory table. Never drop it.
 - One row per memory file.

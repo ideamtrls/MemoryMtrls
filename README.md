@@ -37,7 +37,7 @@ CLAUDE.md  (small, always loaded)
   `updated`) and a body with the project knowledge for that area.
 - The frontmatter is the source of truth. The router table in `CLAUDE.md` is
   generated from it and can be rebuilt any time.
-- Anything in `CLAUDE.md` outside the `<!-- mtrls:router:* -->` markers is left
+- Anything in `CLAUDE.md` outside the `<!-- memorymtrls:* -->` markers is left
   alone.
 
 See [`plugin/SPEC.md`](plugin/SPEC.md) for the file formats.
