@@ -14,10 +14,10 @@ If there is no `memory/` directory yet, tell the user to run `/memorymtrls:init`
 first, and stop.
 
 ## Step 1 — Determine what changed this session
-Review what actually happened in this session and extract anything worth
-writing down for future sessions. The point is to update knowledge of the
-system as it is after the changes. Avoid language that talks about things
-that are no longer true, like removed features.
+Review what actually happened in this session — including any notes it wrote to
+`.notes/` — and extract anything worth writing down for future sessions. The
+point is to update knowledge of the system as it is after the changes. Avoid
+language that talks about things that are no longer true, like removed features.
 
 Examples of knowledge worth keeping:
 - files created, edited, moved, or deleted;

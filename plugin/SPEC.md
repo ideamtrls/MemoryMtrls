@@ -95,6 +95,13 @@ Conventions live in the memory files (§3), not here — they load only when the
 <One or two lines on what the project is. Note any rules that apply to every task here too.>
 
 <!-- memorymtrls:start -->
+
+`.notes/` should be used for **personal workflow scratch** and gitignored. Place artifacts produced while working in here, such as plans, specs, exploratory writeups, eg thinking out loud.
+
+- Plans → `.notes/plans/YYYY-MM-DD-<slug>.md` — execution outlines for multi-step work. Stay as historical record after the work lands.
+- Specs → `.notes/specs/YYYY-MM-DD-<slug>.md` — designs before implementation.
+- Other → `.notes/scratch/`.
+
 ## Memory
 
 This project's working context lives in <Memory directory>, with one file per category of context. The table below maps task level concerns to the context file(s) that cover it.
@@ -106,6 +113,7 @@ This project's working context lives in <Memory directory>, with one file per ca
 | `memory/auth.md` | working on login, sessions, tokens, permissions |
 | `memory/concurrency.md` | touching async code, locks, the task queue, workers |
 | `memory/data-model.md` | changing schemas or migrations, anything under `db/` |
+
 <!-- memorymtrls:end -->
 ```
 

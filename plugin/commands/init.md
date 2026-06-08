@@ -108,3 +108,14 @@ a short project header.
 Summarize what you created or migrated (the files + the router), note the mode
 you used and any agents you dispatched, and tell the user to run
 `/memorymtrls:update` at the end of future sessions to keep memory current.
+
+## Step 8 — Clean up historical data
+
+Tell the user the memory system is created, and the last step is to clean up the
+historical workflow data.
+
+- Figure out which directory holds the workflow scratch — plans, specs,
+  exploratory writeups, task lists; working notes, not published docs.
+- Tell the user MemoryMtrls keeps this as `.notes/` and adds it to `.gitignore`,
+  to separate the temporary from the permanent, then move it there. (If there is
+  no such directory, just create `.notes/` and gitignore it.)
