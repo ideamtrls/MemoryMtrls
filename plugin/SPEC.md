@@ -1,6 +1,6 @@
 # MemoryMtrls format spec
 
-This file is the single source of truth for the file formats used by MemoryMtrls commands. Both `/memorymtrls:init` and `/memorymtrls:update` read this before writing anything, so the two commands never drift apart.
+This file is the single source of truth for the file formats used by MemoryMtrls commands. Both `/memorymtrls:init` and `/memorymtrls:improve` read this before writing anything, so the two commands never drift apart.
 
 The core idea: `CLAUDE.md` is auto-loaded into every agent's context, so it must stay small. Everything else lives in a memory directory, one file per category, read only when relevant.
 
@@ -73,6 +73,15 @@ Real, specific knowledge about this area drawn from the actual codebase: convent
 - Include this area's conventions and style, not just facts.
 - Keep it self-contained per category. Cross-reference sparingly.
 - It is fine for a file to be short. A small accurate file beats a padded one.
+- **Memories describe what *is*, never what *was*.** A memory file is a
+  description of the current state of the system, not a changelog. Change
+  narration — "previously", "used to", "no longer", "was removed", "renamed
+  from", "migrated to", "now uses" — has no place in a memory file. When the
+  reasoning behind a decision matters, state it as a present-tense fact
+  ("sessions live in Redis because the app runs on multiple hosts"), not as an
+  event ("we moved sessions from cookies to Redis"). Content about removed
+  features is deleted outright, unless the *absence* itself is a gotcha worth
+  knowing — then describe the absence, in the present tense.
 
 ---
 
@@ -108,6 +117,8 @@ This project's working context lives in <Memory directory>, with one file per ca
 
 **IMPORTANT: Before starting a task, scan this table. If any rows match the task, read the relevant memory files, and then start the task.** Read only the rows that match. Context window efficiency is gained by not reading irrelevant context; if nothing matches, proceed without reading any.
 
+**IMPORTANT: Before finishing a task that changed how an area works, update that area's memory file.** Keep edits surgical and bump `updated`. Memory files describe the current state of the system — what *is*, never what *was*. Do not narrate the change ("previously", "no longer", "moved from…"); rewrite the affected text as if the current state had always been true. If the work created a new area with no matching file, tell the user rather than inventing a category.
+
 | Memory file | Read this when… |
 | ----------- | --------------- |
 | `memory/auth.md` | working on login, sessions, tokens, permissions |
@@ -119,7 +130,7 @@ This project's working context lives in <Memory directory>, with one file per ca
 
 ### Generating the router table
 
-- Always include the routing instruction (the bold "Before starting a task…" sentence above) verbatim inside the block, except for the `<Memory directory>` tag which should be rendered. It is crucial agents actually consult the memory table. Never drop it.
+- Always include both bold instructions (the "Before starting a task…" routing instruction and the "Before finishing a task…" maintenance instruction) verbatim inside the block, except for the `<Memory directory>` tag which should be rendered. The routing instruction is what makes agents consult memory; the maintenance instruction is what keeps memory current as agents work. Never drop either.
 - One row per memory file.
 - **Read this when…** is written from that file's `scope` + `keywords` (and, where helpful, its `globs`). It should be phrased as the situation/symptoms a fresh agent would recognize, not just the topic noun.
 - Rebuild the whole block between the markers from the current frontmatter set. Never hand-edit rows in a way that diverges from frontmatter. Frontmatter is the truth for each file.

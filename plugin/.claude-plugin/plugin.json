@@ -1,7 +1,7 @@
 {
   "name": "memorymtrls",
   "description": "Replace a monolithic CLAUDE.md with a categorized memory/ directory that agents read on demand, so context is only spent on what's actually being worked on.",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "author": {
     "name": "jmsdnns"
   },

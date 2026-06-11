@@ -105,9 +105,12 @@ a short project header.
 
 ## Step 7 — Report
 
-Summarize what you created or migrated (the files + the router), note the mode
-you used and any agents you dispatched, and tell the user to run
-`/memorymtrls:update` at the end of future sessions to keep memory current.
+Summarize what you created or migrated (the files + the router), and note the
+mode you used and any agents you dispatched. Explain how memory stays current:
+the router block instructs agents to update the affected memory files as they
+finish work, and `/memorymtrls:improve` is run occasionally to audit the files —
+enforcing standards, rewriting history-speak into present state, and fixing
+anything stale.
 
 ## Step 8 — Clean up historical data
 

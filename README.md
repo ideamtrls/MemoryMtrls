@@ -48,8 +48,10 @@ See [`plugin/SPEC.md`](plugin/SPEC.md) for the file formats.
   categories, waits for your approval, then writes the `memory/` files and
   replaces `CLAUDE.md` with a router. It won't write anything until you approve
   the categories.
-- `/memorymtrls:update` — run it at the end of a session. It finds what changed,
-  updates the affected memory files, and regenerates the router.
+- `/memorymtrls:improve` — run it occasionally. Agents keep memory current as
+  they work (the router tells them to), so this command is the quality pass: it
+  audits the files against the SPEC, rewrites any "what was" language into
+  "what is", verifies claims against the source, and regenerates the router.
 
 ## Install
 
@@ -61,5 +63,6 @@ See [`plugin/SPEC.md`](plugin/SPEC.md) for the file formats.
 ## Usage
 
 1. Run `/memorymtrls:init` and approve the categories.
-2. Work as normal. Agents read only the memory files they need.
-3. Run `/memorymtrls:update` at the end of a session to keep memory current.
+2. Work as normal. Agents read only the memory files they need, and update
+   them as they finish work — always describing what *is*, never what *was*.
+3. Run `/memorymtrls:improve` occasionally to audit memory quality.
